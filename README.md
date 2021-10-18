@@ -1,34 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Analise do Canal
 
-## Getting Started
+## Entrar em contato 
+[randomk.contact@gmail.com](https://www.youtube.com/c/randomk/about)
+[statsk](https://www.youtube.com/c/statsk/) - _Todas as musicas_
+Criar um site que filtra os resulstados que ele faz que são disponibilizados no vídeo mas mostrar visualização completa no site.
 
-First, run the development server:
+Haverá visualização dos grupos a cada um por ordem alfabética / empresa, mostrando a divisão geral na discografia, por album e por música.
+Poderá criar comparações entre grupos.
+Em questão de ordenação verificar se há alguma possibilidade de filtrar por chart em ordenação.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Comparação entre empresas
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Identificar certo padrão entre empresas JYP, YG e SMTown.
+- Identificar suas "responsabilidades" no grupo através da API do google.
+## Visualização dos dados
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Além dos dados informados acima,
+Utilizar API do Youtube para mostrar os vídeos do canal.
+Quantidade de comentários e informações básicas com um player integrado
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Referencias
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[Descrobrir id de canal](https://stackoverflow.com/a/14378955)
