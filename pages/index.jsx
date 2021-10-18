@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
+import { gsap } from 'gsap';
+
 import { fetchPlaylists } from 'apis/youtube';
 import { Header } from 'components';
 import { PlaylistList } from 'features';
-import { useEffect, useState } from 'react';
 import styles from 'styles/Home.module.css';
 
 const Home = () => {
@@ -14,8 +16,19 @@ const Home = () => {
   }, []);
   return (
     <div className={styles.container}>
-      <Header />
-      <PlaylistList list={playlist} />
+      <aside className={styles.aside}>
+        <Header />
+        <h2>Welcome to kpop statistics</h2>
+        <p>
+          This site has no intention of denigrating any artist or company,
+          <br />
+          having only as a proposal of information to the public that consumes
+          the products offered by them.
+        </p>
+      </aside>
+      <main>
+        <PlaylistList list={playlist} />
+      </main>
     </div>
   );
 };

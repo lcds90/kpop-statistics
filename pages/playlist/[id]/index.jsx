@@ -10,13 +10,14 @@ const Playlist = ({ playlistId }) => {
 
   useEffect(() => {
     if (!playlistId) router.push('/');
-
+    console.log(playlistId);
     const fetch = () => {
       fetchMusics(playlistId).then((data) => {
         axios
         .get('/api/playlist', { params: { id } })
         .then(({ data: { informations } }) => {
-
+          console.log('informations', informations);
+          if(!informations) return setPlaylistInfo(data);
           // NOTE looking for id in object to match from api to retrieve statistcs or return empty object
           const dataHandling = data.map((playObj) => {
             const statistics = informations
@@ -31,6 +32,7 @@ const Playlist = ({ playlistId }) => {
     fetch();
   }, [id]);
 
+  const { id: playlistIds  } = playlistInfo;
   return (
     <div>
       {JSON.stringify(playlistInfo)}

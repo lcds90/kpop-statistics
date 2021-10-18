@@ -25,13 +25,13 @@ const PlaylistCard = ({ playlist }) => {
       pathname: 'playlist/[id]',
       query: { playlistId: id }
     }} as={`playlist/${title.toLowerCase().replace(/\s/g, '-')}`}>
-      <section className={styles.card}>
+      <section
+        style={{ backgroundImage: `url(${thumbnail})` }}    
+        className={styles.card}
+        title={title}
+        >
         <h3>{title}</h3>
         <article>
-          <div
-            className={styles.cardBackground}
-            style={{ backgroundImage: `url(${thumbnail})` }}
-          />
           {description}
           <h4>Published</h4>
           <h5>{`by ${channelTitle} `}</h5>

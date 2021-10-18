@@ -1,6 +1,7 @@
-# Analise do Canal
+# K-Pop Statistscs
 
-## Entrar em contato 
+## Analise do Canal
+### Entrar em contato 
 [randomk.contact@gmail.com](https://www.youtube.com/c/randomk/about)
 [statsk](https://www.youtube.com/c/statsk/) - _Todas as musicas_
 Criar um site que filtra os resulstados que ele faz que são disponibilizados no vídeo mas mostrar visualização completa no site.
