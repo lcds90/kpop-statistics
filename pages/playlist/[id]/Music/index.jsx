@@ -7,13 +7,12 @@ import {
 import {
   labelFormatterTime, labelFormatterPercentage,
   percentageStatistics, timeStatistics,
-  defaultObject,
 } from 'helpers';
 
 const Music = ({
   music: {
     snippet,
-    statistics,
+    statistics = {},
   } = {},
 }) => {
   if (!snippet) return <div>Carregando...</div>;
@@ -26,6 +25,7 @@ const Music = ({
       high: { url: thumbnail },
     },
   } = snippet;
+  
   return (
     <section className={styles.section}>
       <article>

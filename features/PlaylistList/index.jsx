@@ -13,10 +13,10 @@ const PlaylistList = ({ list }) => {
   useEffect(() => {
     setItems(list);
     timeline.from(cardsRef.current.childNodes, {
-      x: -50,
+      y: -500,
       opacity: 0,
       duration: 0.7,
-      stagger: 0.1,
+      stagger: 0.25,
     });
     timeline.play();
   }, [list]);
@@ -33,8 +33,9 @@ const PlaylistList = ({ list }) => {
   }
 
   return (
+    <>
     <section ref={cardsRef} className={styles.section}>
-      <div className={styles.div}>
+    <div className={styles.div}>
       <select onChange={handleOrder} value={order}>
         <option value="ascDate">Por mais novo</option>
         <option value="descDate">Por mais antigo</option>
@@ -47,6 +48,7 @@ const PlaylistList = ({ list }) => {
       ? list.map((playlist) => <Card playlist={playlist} key={playlist.id} />)
       : items.map((playlist) => <Card playlist={playlist} key={playlist.id} />)}
     </section>
+    </>
   );
 };
 

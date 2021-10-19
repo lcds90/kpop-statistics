@@ -29,6 +29,7 @@ const Playlist = ({ playlistId }) => {
           });
       });
     };
+    
     fetch();
   }, [id]);
 
