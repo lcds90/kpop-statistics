@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styles from 'styles/Header.module.css';
 
 import { iconBrazil, iconSouthKorea, iconUSA } from 'assets';
-import welcomeMessage from './helpers';
+import { welcomeMessage } from 'helpers';
 
 const Header = () => {
   const { t } = useTranslation('common');

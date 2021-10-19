@@ -7,7 +7,7 @@ import {
 import {
   labelFormatterTime, labelFormatterPercentage,
   percentageStatistics, timeStatistics,
-} from './helpers';
+} from 'helpers';
 
 const Music = ({
   music: {

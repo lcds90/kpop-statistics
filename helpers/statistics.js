@@ -1,6 +1,5 @@
 const capitalizeName = (name) => name.charAt(0).toUpperCase() + name.slice(1);
-export const labelFormatterPercentage = ({ value }) => `${(value)}%`;
-export const labelFormatterTime = ({ value }) => `${(value)}s`;
+
 export const timeStatistics = (statistics) => Object
   .entries(statistics)
   .filter((s) => s[0] !== 'id')
