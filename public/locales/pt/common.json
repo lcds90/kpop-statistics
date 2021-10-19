@@ -8,5 +8,9 @@
     },
     "title": "Bem-vindo à K-pop Statistics",
     "disclaimer": "Este site não tem a intenção de denegrir nenhum artista ou empresa, tendo apenas como proposta de informação ao público que consome os produtos por eles oferecidos."
+  },
+  "playlist": {
+    "by": "Publicado por",
+    "at": "Na data de"
   }
 }

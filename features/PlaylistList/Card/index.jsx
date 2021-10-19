@@ -1,8 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from 'styles/PlaylistList.module.css';
+import { useTranslation } from 'react-i18next';
 
 const PlaylistCard = ({ playlist }) => {
+  const { t } = useTranslation('common');
   const {
     id,
     snippet: {
@@ -32,10 +34,9 @@ const PlaylistCard = ({ playlist }) => {
         >
         <h3>{title}</h3>
         <article>
-          {description}
-          <h4>Published</h4>
-          <h5>{`by ${channelTitle} `}</h5>
-          <h6>{`at ${published()}`}</h6>
+          <p>{description}</p>
+          <h4>{`${t('playlist.by')} ${channelTitle} `}</h4>
+          <h5>{`${t('playlist.at')} ${published()}`}</h5>
         </article>
       </section>
     </Link>

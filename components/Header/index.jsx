@@ -26,6 +26,7 @@ const Header = () => {
         <button type="button">
           <Image
             alt="Change to English Language"
+            title="Change to English Language"
             src={iconUSA}
             layout="fill"
             quality={100}
@@ -36,6 +37,7 @@ const Header = () => {
         <button type="button">
           <Image
             alt="Change to Korean Language"
+            title="Change to Korean Language"
             src={iconSouthKorea}
             layout="fill"
             quality={100}
@@ -47,6 +49,7 @@ const Header = () => {
         <button type="button">
           <Image
             alt="Change to Portuguese Language"
+            title="Change to Portuguese Language"
             src={iconBrazil}
             layout="fill"
             quality={100}
