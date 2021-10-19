@@ -24,7 +24,8 @@ export const fetchPlaylists = async () => {
 
     const res = await youtube.get('/playlists', { params });
     const playlists = res.data.items.filter((playlist) => !playlist.snippet.title
-      .toLowerCase().includes('distribution'));
+      .toLowerCase()
+      .includes('distribution'));
     return playlists;
   } catch (error) {
     return { error };
