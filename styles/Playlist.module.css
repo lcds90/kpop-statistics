@@ -1,0 +1,57 @@
+.main {
+  background-color: var(--primary);
+  background-image: url('/images/banner.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 100%;
+  display: grid;
+  grid: max-content 1fr / 1fr;
+  animation-name: MOVE-BG;
+  animation-duration: 100s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  min-height: 100vh;
+  place-items: center;
+}
+
+.section > article {
+  display: grid;
+  width: 100%;
+  padding: 2rem 0;
+  grid-template-rows: min-content 1fr;
+}
+
+.section > article h3 {
+  place-self:center;
+  color:white;
+  padding:25px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.section > article > div {
+  display: grid;
+  grid: 1fr / 1fr 1fr;
+}
+
+.section > article > div > div:not(:last-child){
+  border-right: 5px double black;
+}
+
+@keyframes MOVE-BG {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}

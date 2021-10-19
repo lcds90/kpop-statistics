@@ -1,24 +1,31 @@
 .container {
-  background: var(--primary);
+  background-color: var(--primary);
+  background-image: url('/images/banner.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
   width: 100vw;
   min-height: 100vh;
   max-width: 100%;
   display: grid;
   grid: max-content 1fr / 1fr;
+  animation-name: MOVE-BG;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
 .aside {
   background: var(--background);
- display:grid;
- place-items:center;
- color:var(--secondary);
- font-style: italic;
- font-weight: 400; 
- padding: 2rem;
+  display: grid;
+  place-items: center;
+  color: var(--secondary);
+  font-style: italic;
+  font-weight: 400;
+  padding: 2rem;
 }
 
 .aside h2 {
-  font-size:2rem;
+  font-size: 2rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -29,5 +36,23 @@
 
   .aside {
     grid: 1fr 0.5fr 3fr / 1fr;
+  }
+}
+
+@keyframes MOVE-BG {
+  0% {
+    background-position: 0% -1000%;
+  }
+  25% {
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 0% 0%;
+  }
+  75% {
+    background-position: 0% -100%;
+  }
+  100% {
+    background-position: 0% -1000%;
   }
 }

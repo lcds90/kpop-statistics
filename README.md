@@ -14,6 +14,8 @@ Em questão de ordenação verificar se há alguma possibilidade de filtrar por 
 
 - Identificar certo padrão entre empresas JYP, YG e SMTown.
 - Identificar suas "responsabilidades" no grupo através da API do google.
+- Quem começa cantando
+- Quem termina cantando
 ## Visualização dos dados
 
 Além dos dados informados acima,
