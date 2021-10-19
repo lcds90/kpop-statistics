@@ -1,0 +1,11 @@
+{
+  "welcome": {
+    "greeting": {
+      "afternoon": "안녕하세요",
+      "dawn": "안녕히 주무세요",
+      "evening": "안녕하십니까",
+      "morning": "안녕하세요"
+    },
+    "title": "K-pop 통계에 오신 것을 환영합니다"
+  }
+}

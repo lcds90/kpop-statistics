@@ -1,0 +1,11 @@
+{
+  "welcome": {
+    "greeting": {
+      "afternoon": "Boa tarde",
+      "dawn": "Olá",
+      "evening": "Boa noite",
+      "morning": "Bom dia"
+    },
+    "title": "Bem-vindo ao K-pop Statistics"
+  }
+}
