@@ -7,62 +7,67 @@ import {
 import {
   labelFormatterTime, labelFormatterPercentage,
   percentageStatistics, timeStatistics,
+  defaultObject,
 } from 'helpers';
 
 const Music = ({
   music: {
-    snippet: {
-      channelTitle,
-      description,
-      resourceId: { videoId },
-      title,
-      thumbnails: {
-        high: { url: thumbnail },
-      },
-    },
+    snippet,
     statistics,
-  },
-}) => (
-  <section className={styles.section}>
-    <article>
-      <h3>{title}</h3>
-      <div>
-        <ResponsiveContainer width="99%" height={300}>
-          <PieChart width={300} height={300}>
-            <Pie
-              dataKey="value"
-              isAnimationActive={false}
-              data={timeStatistics(statistics)}
-              cx="50%"
-              cy="50%"
-              outerRadius={80}
-              legendType="square"
-              label={labelFormatterTime}
-            />
-            <Legend verticalAlign="top" height={36} />
-            <Tooltip />
-          </PieChart>
-        </ResponsiveContainer>
-        <ResponsiveContainer width="99%" height={300}>
+  } = {},
+}) => {
+  if (!snippet) return <div>Carregando...</div>;
+  const {
+    channelTitle,
+    description,
+    resourceId: { videoId },
+    title,
+    thumbnails: {
+      high: { url: thumbnail },
+    },
+  } = snippet;
+  return (
+    <section className={styles.section}>
+      <article>
+        <h3>{title}</h3>
+        <div>
+          <ResponsiveContainer width="99%" height={300}>
+            <PieChart width={300} height={300}>
+              <Pie
+                dataKey="value"
+                isAnimationActive={false}
+                data={timeStatistics(statistics)}
+                cx="50%"
+                cy="50%"
+                outerRadius={80}
+                legendType="square"
+                label={labelFormatterTime}
+              />
+              <Legend verticalAlign="top" height={36} />
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+          <ResponsiveContainer width="99%" height={300}>
 
-          <PieChart width={300} height={300}>
-            <Pie
-              dataKey="value"
-              isAnimationActive={false}
-              data={percentageStatistics(statistics)}
-              cx="50%"
-              cy="50%"
-              outerRadius={80}
-              label={labelFormatterPercentage}
-            />
-            <Legend verticalAlign="top" height={36} />
-            <Tooltip />
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
-    </article>
-    <ReactPlayer url={`https://www.youtube.com/watch?v=${videoId}`} controls />
-  </section>
-);
+            <PieChart width={300} height={300}>
+              <Pie
+                dataKey="value"
+                isAnimationActive={false}
+                data={percentageStatistics(statistics)}
+                cx="50%"
+                cy="50%"
+                outerRadius={80}
+                label={labelFormatterPercentage}
+              />
+              <Legend verticalAlign="top" height={36} />
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+      </article>
+      <ReactPlayer url={`https://www.youtube.com/watch?v=${videoId}`} controls />
+    </section>
+  );
+};
 
 export default Music;

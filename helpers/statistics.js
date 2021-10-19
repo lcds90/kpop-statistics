@@ -1,5 +1,15 @@
 const capitalizeName = (name) => name.charAt(0).toUpperCase() + name.slice(1);
 
+export const defaultObject = {
+  channelTitle: '',
+  description: '',
+  resourceId: { videoId: '' },
+  title: '',
+  thumbnails: {
+    high: { url: '' },
+  },
+};
+
 export const timeStatistics = (statistics) => Object
   .entries(statistics)
   .filter((s) => s[0] !== 'id')

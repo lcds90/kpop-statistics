@@ -34,6 +34,9 @@ const Playlist = ({ playlistId }) => {
 
   return (
     <main className={styles.main}>
+      <section className={styles.section}>
+        Sobre o artista
+      </section>
       {playlistInfo.map((playlist) => <Music key={playlist.id} music={playlist} />)}
     </main>
   );
