@@ -26,11 +26,8 @@ const Music = ({
     },
   } = snippet;
   
-  return (
-    <section className={styles.section}>
-      <article>
-        <h3>{title}</h3>
-        <div>
+  const renderStatistics = () => (
+    <div>
           <ResponsiveContainer width="99%" height={300}>
             <PieChart width={300} height={300}>
               <Pie
@@ -64,6 +61,23 @@ const Music = ({
             </PieChart>
           </ResponsiveContainer>
         </div>
+  )
+
+  const renderNullStatistics = () => (
+    <div>
+      No statistics
+    </div>
+  )
+
+  return (
+    <section className={styles.section}>
+      <article>
+        <h3>{title}</h3>
+        {
+        Object.keys(statistics).length > 1
+        ? renderStatistics()
+        : renderNullStatistics()
+        }
       </article>
       <ReactPlayer url={`https://www.youtube.com/watch?v=${videoId}`} controls />
     </section>

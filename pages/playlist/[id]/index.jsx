@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { fetchMusics } from 'apis/youtube';
+import { fetchInfo } from 'apis/wikipedia'
 import styles from 'styles/Playlist.module.css';
 import Music from './Music';
 
 const Playlist = ({ playlistId }) => {
   const router = useRouter();
   const [playlistInfo, setPlaylistInfo] = useState([]);
+  const [artistInfo, setArtist] = useState(null);
+
   const { id } = router.query;
 
   useEffect(() => {
@@ -17,14 +20,19 @@ const Playlist = ({ playlistId }) => {
         if (!Array.isArray(data)) return;
         axios
           .get('/api/playlist', { params: { id } })
-          .then(({ data: { informations } }) => {
+          .then(async ({ data: { informations } }) => {
+            console.log(informations);
             if (!informations) return setPlaylistInfo(data);
+            const { musics, info } = informations;
             // NOTE expect to match from api to retrieve statistcs or return empty object
             const dataHandling = data.map((playObj) => {
-              const statistics = informations
+              const statistics = musics
                 .find((info) => info.id === playObj.snippet.resourceId.videoId) || {};
               return { ...playObj, statistics };
             });
+
+            const wikipediaInfo = await fetchInfo(info.wikiQuery);
+            setArtist(wikipediaInfo);
             return setPlaylistInfo(dataHandling);
           });
       });
@@ -37,6 +45,7 @@ const Playlist = ({ playlistId }) => {
     <main className={styles.main}>
       <section className={styles.section}>
         Sobre o artista
+       {artistInfo && <article className={styles.artistInfo} dangerouslySetInnerHTML={{__html: artistInfo}} />}
       </section>
       {playlistInfo.map((playlist) => <Music key={playlist.id} music={playlist} />)}
     </main>

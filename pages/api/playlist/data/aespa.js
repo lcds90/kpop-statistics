@@ -1,3 +1,9 @@
+// TODO quem canta mais no começo/final
+// TODO media de discografias
+export const info = {
+  wikiQuery: 'aespa'
+}
+
 export const savage = {
   // 'https://www.youtube.com/watch?v=7ROtgvY_e-A',
   id: '7ROtgvY_e-A',

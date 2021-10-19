@@ -7,11 +7,26 @@
   min-height: 100vh;
   max-width: 100%;
   display: grid;
+  padding: 0 5rem;
   grid: max-content 1fr / 1fr;
   animation-name: MOVE-BG;
   animation-duration: 100s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+}
+
+.artistInfo {
+  display: grid;
+  max-height: 80vh;
+  overflow: auto;
+  padding: 2rem;
+  line-height: 2rem;
+  border-radius: 5px;
+  border: 5px double var(--secondary);
+}
+
+.artistInfo ul {
+  list-style: none;
 }
 
 .section {
@@ -21,7 +36,7 @@
   place-items: center;
 }
 
-.section > article {
+.section > article:not(:first-child) {
   display: grid;
   width: 100%;
   padding: 2rem 0;
