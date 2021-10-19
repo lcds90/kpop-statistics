@@ -1,0 +1,23 @@
+.header {
+    display: grid;
+    grid: 1fr 1fr/ 1fr 1fr 1fr;
+    width:100%;
+    height:max-content;
+    place-items:center;
+    gap:1.5rem 0;
+    text-align:center;
+}
+
+.header > h2 {
+    grid-column: span 3;
+}
+
+.header > button {
+    background: transparent;
+    border: 0;
+    width:5rem;
+    height:5rem;
+    position: relative;
+    border-radius:1rem;
+    cursor:pointer;
+}

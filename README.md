@@ -22,5 +22,5 @@ Quantidade de comentários e informações básicas com um player integrado
 
 
 ## Referencias
-
+[Icones](https://iconarchive.com/show/2014-world-cup-flags-icons-by-custom-icon-design.html)
 [Descrobrir id de canal](https://stackoverflow.com/a/14378955)
