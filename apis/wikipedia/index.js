@@ -8,54 +8,53 @@ SECTION WIKIPEDIA api
 */
 
 const wikitext = axios.create({
-    baseURL: 'https://en.wikipedia.org/w',
-    params: {
-        action: 'query',
-        origin: '*',
-        format: 'json',
-        prop: 'extracts',
-        rvslots: '*',
-        rvprop: 'content',
-        formatversion: '2'
-    },
+  baseURL: 'https://en.wikipedia.org/w',
+  params: {
+    action: 'query',
+    origin: '*',
+    format: 'json',
+    prop: 'extracts',
+    rvslots: '*',
+    rvprop: 'content',
+    formatversion: '2',
+  },
 });
 
 export const fetchInfo = async (query) => {
-    try {
-        const params = {
-            titles: query
-        };
+  try {
+    const params = {
+      titles: query,
+    };
 
-        const res = await wikitext.get('/api.php', {
-            params
-        });
-        console.log(res);
-        const data = res.data.query.pages[0].extract;
-        return data;
-    } catch (error) {
-        return {
-            error
-        };
-    }
+    const res = await wikitext.get('/api.php', {
+      params,
+    });
+    const data = res.data.query.pages[0].extract;
+    return data;
+  } catch (error) {
+    return {
+      error,
+    };
+  }
 };
 
 export const fetchMusics = async (playlistId) => {
-    try {
-        const params = {
-            playlistId,
-            maxResults: 50,
-        };
+  try {
+    const params = {
+      playlistId,
+      maxResults: 50,
+    };
 
-        const res = await youtube.get('/playlistItems', {
-            params
-        });
-        const {
-            items
-        } = res.data;
-        return items;
-    } catch (error) {
-        return {
-            error
-        };
-    }
+    const res = await youtube.get('/playlistItems', {
+      params,
+    });
+    const {
+      items,
+    } = res.data;
+    return items;
+  } catch (error) {
+    return {
+      error,
+    };
+  }
 };

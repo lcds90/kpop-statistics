@@ -25,49 +25,49 @@ const Music = ({
       high: { url: thumbnail },
     },
   } = snippet;
-  
+
   const renderStatistics = () => (
     <div>
-          <ResponsiveContainer width="99%" height={300}>
-            <PieChart width={300} height={300}>
-              <Pie
-                dataKey="value"
-                isAnimationActive={false}
-                data={timeStatistics(statistics)}
-                cx="50%"
-                cy="50%"
-                outerRadius={80}
-                legendType="square"
-                label={labelFormatterTime}
-              />
-              <Legend verticalAlign="top" height={36} />
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-          <ResponsiveContainer width="99%" height={300}>
+      <ResponsiveContainer width="99%" height={300}>
+        <PieChart width={300} height={300}>
+          <Pie
+            dataKey="value"
+            isAnimationActive={false}
+            data={timeStatistics(statistics)}
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            legendType="square"
+            label={labelFormatterTime}
+          />
+          <Legend verticalAlign="top" height={36} />
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer>
+      <ResponsiveContainer width="99%" height={300}>
 
-            <PieChart width={300} height={300}>
-              <Pie
-                dataKey="value"
-                isAnimationActive={false}
-                data={percentageStatistics(statistics)}
-                cx="50%"
-                cy="50%"
-                outerRadius={80}
-                label={labelFormatterPercentage}
-              />
-              <Legend verticalAlign="top" height={36} />
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-  )
+        <PieChart width={300} height={300}>
+          <Pie
+            dataKey="value"
+            isAnimationActive={false}
+            data={percentageStatistics(statistics)}
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            label={labelFormatterPercentage}
+          />
+          <Legend verticalAlign="top" height={36} />
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
+  );
 
   const renderNullStatistics = () => (
     <div>
       No statistics
     </div>
-  )
+  );
 
   return (
     <section className={styles.section}>
@@ -75,8 +75,8 @@ const Music = ({
         <h3>{title}</h3>
         {
         Object.keys(statistics).length > 1
-        ? renderStatistics()
-        : renderNullStatistics()
+          ? renderStatistics()
+          : renderNullStatistics()
         }
       </article>
       <ReactPlayer url={`https://www.youtube.com/watch?v=${videoId}`} controls />

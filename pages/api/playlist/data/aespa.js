@@ -1,12 +1,7 @@
-// TODO quem canta mais no começo/final
-// TODO media de discografias
-export const info = {
-  wikiQuery: 'aespa'
-}
-
 export const savage = {
   // 'https://www.youtube.com/watch?v=7ROtgvY_e-A',
   id: '7ROtgvY_e-A',
+  ep: 'Savage',
   giselle: {
     time: 42.97,
     percentage: 19.62,
@@ -32,6 +27,7 @@ export const savage = {
 export const nextLevel = {
   // id: 'https://www.youtube.com/watch?v=Wi3JuE4m-Lo',
   id: 'Wi3JuE4m-Lo',
+  ep: 'Savage',
   giselle: {
     time: 36.34,
     percentage: 21.77,
@@ -51,5 +47,41 @@ export const nextLevel = {
     time: 44.63,
     percentage: 26.74,
     fill: '#5d63d0',
+  },
+};
+
+const averageCount = (name, type) => {
+  const musics = [savage, nextLevel];
+  const average = musics
+    .reduce((arr, curr) => curr[name][type] + arr, 0);
+  return Number((average / musics.length).toFixed(2));
+};
+
+// TODO quem canta mais no começo/final
+// TODO media de discografias
+export const info = {
+  wikiQuery: 'aespa',
+  extendedPlays: new Set([savage.ep, nextLevel.ep]),
+  average: {
+    giselle: {
+      time: averageCount('giselle', 'time'),
+      percentage: averageCount('giselle', 'percentage'),
+      fill: '#5dd06e',
+    },
+    karina: {
+      time: averageCount('karina', 'time'),
+      percentage: averageCount('karina', 'percentage'),
+      fill: '#d08b5d',
+    },
+    ningning: {
+      time: averageCount('ningning', 'time'),
+      percentage: averageCount('ningning', 'percentage'),
+      fill: '#b15dd0',
+    },
+    winter: {
+      time: averageCount('winter', 'time'),
+      percentage: averageCount('winter', 'percentage'),
+      fill: '#5d63d0',
+    },
   },
 };
