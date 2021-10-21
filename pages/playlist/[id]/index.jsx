@@ -5,6 +5,7 @@ import { fetchMusics } from 'apis/youtube';
 import { fetchInfo } from 'apis/wikipedia';
 import styles from 'styles/Playlist.module.css';
 import Music from './Music';
+import Statistics from './Statistics';
 
 const Playlist = ({ playlistId }) => {
   const router = useRouter();
@@ -26,12 +27,13 @@ const Playlist = ({ playlistId }) => {
             const { musics, info } = informations;
             // NOTE expect to match from api to retrieve statistcs or return empty object
             const dataHandling = data.map((playObj) => {
+              console.log(playObj);
               const statistics = musics
                 .find((music) => music.id === playObj.snippet.resourceId.videoId) || {};
               return { ...playObj, statistics };
             });
             const wikipediaInfo = await fetchInfo(info.wikiQuery);
-            setArtist(wikipediaInfo);
+            setArtist(wikipediaInfo.split('<h2><span id="Discography">')[0]);
             setArtistAverage({ ...info.average });
             return setPlaylistInfo(dataHandling);
           });
@@ -40,11 +42,9 @@ const Playlist = ({ playlistId }) => {
 
     fetch();
   }, [id]);
-
   return (
     <main className={styles.main}>
       <section className={styles.section}>
-        Sobre o artista
         {artistInfo
         && (
         <article
@@ -52,7 +52,7 @@ const Playlist = ({ playlistId }) => {
           dangerouslySetInnerHTML={{ __html: artistInfo }}
         />
         )}
-        {artistAverage && JSON.stringify(artistAverage)}
+        {artistAverage && <Statistics average={artistAverage} />}
       </section>
       {playlistInfo.map((playlist) => <Music key={playlist.id} music={playlist} />)}
     </main>

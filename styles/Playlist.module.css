@@ -36,6 +36,10 @@
   place-items: center;
 }
 
+.section > article:first-child {
+  width:100%;
+}
+
 .section > article:not(:first-child) {
   display: grid;
   width: 100%;
@@ -44,10 +48,13 @@
 }
 
 .section > article h3 {
-  place-self:center;
-  color:white;
-  padding:25px;
-  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  place-self: center;
+  color: white;
+  padding: 25px;
+  text-shadow: 0 2px 2px rgb(0 0 0 / 15%);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 .section > article > div {
