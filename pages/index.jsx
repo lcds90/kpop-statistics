@@ -25,7 +25,7 @@ const Home = () => {
         <h2>{t('welcome.title')}</h2>
         <p>{t('welcome.disclaimer')}</p>
       </aside>
-      <main>
+      <main className={styles.main}>
         <PlaylistList list={playlist} />
       </main>
     </div>

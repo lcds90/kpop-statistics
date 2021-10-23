@@ -11,8 +11,6 @@ import { BarChart } from 'recharts/lib/chart/BarChart';
 const Statistics = ({ average }) => {
   const data = Object.entries(average)
     .map((av) => ({ name: av[0], Time: av[1].time, Percentage: av[1].percentage }));
-  // const data = average.map((av) => console.log(av, Object.keys(av)));
-  // console.log(data);
   return (
     <article>
       <ResponsiveContainer width="99%" height={300}>

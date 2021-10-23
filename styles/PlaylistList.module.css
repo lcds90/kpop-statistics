@@ -1,3 +1,8 @@
+.main {
+  display: grid;
+  grid-template-rows: max-content 5fr;
+}
+
 .section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
@@ -33,7 +38,6 @@
 
 .div {
   display: grid;
-  grid-column: span 4;
   place-items: center;
 }
 
@@ -61,6 +65,10 @@
   .section {
     overflow: auto;
     max-height: 100vh;
+  }
+
+  .div {
+    grid-column: span 4;
   }
 
 

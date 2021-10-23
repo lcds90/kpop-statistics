@@ -21,7 +21,7 @@ const PlaylistList = ({ list }) => {
       stagger: 0.25,
     });
     timeline.play();
-  }, [list]);
+  }, [list, items, timeline]);
 
   const handleOrder = ({ target: { value } }) => {
     const verifyOrder = {
@@ -40,21 +40,21 @@ const PlaylistList = ({ list }) => {
 
   return (
     <>
-      <section ref={cardsRef} className={styles.section}>
-        <div className={styles.div}>
-          <select onChange={handleOrder} value={order}>
-            <option value="ascDate">Por mais novo</option>
-            <option value="descDate">Por mais antigo</option>
-            <option value="asc">A - Z</option>
-            <option value="desc">Z - A</option>
-          </select>
-        </div>
+      <article className={styles.div}>
+        <select onChange={handleOrder} value={order}>
+          <option value="ascDate">Por mais novo</option>
+          <option value="descDate">Por mais antigo</option>
+          <option value="asc">A - Z</option>
+          <option value="desc">Z - A</option>
+        </select>
+      </article>
+      <article className={styles.section} ref={cardsRef}>
         {
       order === 'original'
         ? list.map((playlist) => <Card playlist={playlist} key={playlist.id} />)
         : items.map((playlist) => <Card playlist={playlist} key={playlist.id} />)
 }
-      </section>
+      </article>
     </>
   );
 };
