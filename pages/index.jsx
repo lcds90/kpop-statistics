@@ -5,7 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { fetchPlaylists } from 'apis/youtube';
 import { Header } from 'components';
 import { PlaylistList } from 'features';
-import styles from './Home.module.css';
+import styles from 'styles/Home.module.css';
 
 const Home = () => {
   const [playlist, setPlaylist] = useState([]);
