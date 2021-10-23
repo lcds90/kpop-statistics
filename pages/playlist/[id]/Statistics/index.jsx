@@ -9,6 +9,7 @@ import { YAxis } from 'recharts/lib/cartesian/YAxis';
 import { BarChart } from 'recharts/lib/chart/BarChart';
 
 const Statistics = ({ average }) => {
+  if(!average) return <div>Carregando...</div>
   const data = Object.entries(average)
     .map((av) => ({ name: av[0], Time: av[1].time, Percentage: av[1].percentage }));
   return (
