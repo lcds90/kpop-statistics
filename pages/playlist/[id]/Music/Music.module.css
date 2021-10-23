@@ -1,0 +1,36 @@
+.section {
+  display: grid;
+  max-width: 100%;
+  place-items: center;
+  border: 5px double var(--secondary);
+  padding: 0.5rem;
+  position: relative;
+}
+
+.article{
+  width: 100%;
+}
+
+.title {
+  place-self: center;
+  color: white;
+  text-shadow: 2px 2px 2px rgb(0 0 0 / 15%);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  position: absolute;
+  top: -2rem;
+  background: var(--secondary);
+  left: -0.5rem;
+}
+
+.statistics {
+  display: grid;
+  grid: 1fr / repeat(2, 1fr);
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    grid-template-columns: 3fr 1fr;
+  }
+}

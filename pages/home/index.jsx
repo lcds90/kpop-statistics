@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-// import { gsap } from 'gsap';
 
 import { fetchPlaylists } from 'apis/youtube';
 import { Header } from 'components';
 import { PlaylistList } from 'features';
-import styles from 'styles/Home.module.css';
+import styles from './Home.module.css';
 
 const Home = () => {
   const [playlist, setPlaylist] = useState([]);

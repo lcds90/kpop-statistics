@@ -12,5 +12,9 @@
   "playlist": {
     "by": "에 의해 출판 된",
     "at": "날짜에"
+  },
+  "music": {
+    "percentageStatistics": "노래한 대사 비율",
+    "timeStatistics": "성 라인 시간"
   }
 }

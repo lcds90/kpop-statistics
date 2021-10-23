@@ -16,6 +16,8 @@ Em questão de ordenação verificar se há alguma possibilidade de filtrar por 
 - Identificar suas "responsabilidades" no grupo através da API do google.
 - Quem começa cantando
 - Quem termina cantando
+- Nacionalidade
+
 ## Visualização dos dados
 
 Além dos dados informados acima,

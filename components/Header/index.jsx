@@ -1,10 +1,10 @@
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from 'styles/Header.module.css';
 
 import { iconBrazil, iconSouthKorea, iconUSA } from 'assets';
 import { welcomeMessage } from 'helpers';
+import styles from './Header.module.css';
 
 const Header = () => {
   const { t } = useTranslation('common');
@@ -22,7 +22,7 @@ const Header = () => {
   };
   return (
     <header className={styles.header}>
-      <Link passHref href="/" locale="en">
+      <Link passHref href="/home" locale="en">
         <button type="button">
           <Image
             alt="Change to English Language"
@@ -33,7 +33,7 @@ const Header = () => {
           />
         </button>
       </Link>
-      <Link passHref href="/" locale="ko">
+      <Link passHref href="/home" locale="ko">
         <button type="button">
           <Image
             alt="Change to Korean Language"
@@ -45,7 +45,7 @@ const Header = () => {
           />
         </button>
       </Link>
-      <Link passHref href="/" locale="pt">
+      <Link passHref href="/home" locale="pt">
         <button type="button">
           <Image
             alt="Change to Portuguese Language"

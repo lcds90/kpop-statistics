@@ -1,9 +1,9 @@
 import {
   useEffect, useMemo, useRef, useState,
 } from 'react';
-import styles from 'styles/PlaylistList.module.css';
 import { gsap } from 'gsap';
-import Card from './Card';
+import { Card } from 'components';
+import styles from './PlaylistList.module.css';
 
 // LINK https://javascript.plainenglish.io/react-functions-gsap-timelines-and-hooks-oh-my-ec7620b6bdc6
 
@@ -15,7 +15,7 @@ const PlaylistList = ({ list }) => {
   useEffect(() => {
     setItems(list);
     timeline.from(cardsRef.current.childNodes, {
-      y: -500,
+      x: -50,
       opacity: 0,
       duration: 0.7,
       stagger: 0.25,

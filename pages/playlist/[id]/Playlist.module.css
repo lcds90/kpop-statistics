@@ -7,8 +7,9 @@
   min-height: 100vh;
   max-width: 100%;
   display: grid;
-  padding: 0 5rem;
+  padding: 0 1.5rem;
   grid: max-content 1fr / 1fr;
+  gap:3rem;
   animation-name: MOVE-BG;
   animation-duration: 100s;
   animation-timing-function: linear;
@@ -29,41 +30,12 @@
   list-style: none;
 }
 
-.section {
+.info {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  min-height: 100vh;
+  grid-template-columns: 1fr 3fr;
+  overflow-x:hidden;
   place-items: center;
-}
-
-.section > article:first-child {
-  width:100%;
-}
-
-.section > article:not(:first-child) {
-  display: grid;
-  width: 100%;
-  padding: 2rem 0;
-  grid-template-rows: min-content 1fr;
-}
-
-.section > article h3 {
-  place-self: center;
-  color: white;
-  padding: 25px;
-  text-shadow: 0 2px 2px rgb(0 0 0 / 15%);
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 400;
-}
-
-.section > article > div {
-  display: grid;
-  grid: 1fr / 1fr 1fr;
-}
-
-.section > article > div > div:not(:last-child){
-  border-right: 5px double black;
+  min-height: 100vh;
 }
 
 @keyframes MOVE-BG {

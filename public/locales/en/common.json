@@ -12,5 +12,9 @@
   "playlist": {
     "by": "Published by",
     "at": "On the date of"
+  },
+  "music": {
+    "percentageStatistics": "Percentage of lines sung",
+    "timeStatistics": "Sung lines time"
   }
 }

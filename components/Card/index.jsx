@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from 'styles/PlaylistList.module.css';
+import styles from './Card.module.css';
 import { useTranslation } from 'react-i18next';
 
 const PlaylistCard = ({ playlist }) => {

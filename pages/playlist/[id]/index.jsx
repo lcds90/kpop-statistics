@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
+
 import { fetchMusics } from 'apis/youtube';
 import { fetchInfo } from 'apis/wikipedia';
-import styles from 'styles/Playlist.module.css';
+
+import styles from './Playlist.module.css';
 import Music from './Music';
 import Statistics from './Statistics';
 
@@ -17,6 +20,7 @@ const Playlist = ({ playlistId }) => {
 
   useEffect(() => {
     if (!playlistId) router.push('/');
+
     const fetch = () => {
       fetchMusics(playlistId).then((data) => {
         if (!Array.isArray(data)) return;
@@ -27,7 +31,6 @@ const Playlist = ({ playlistId }) => {
             const { musics, info } = informations;
             // NOTE expect to match from api to retrieve statistcs or return empty object
             const dataHandling = data.map((playObj) => {
-              console.log(playObj);
               const statistics = musics
                 .find((music) => music.id === playObj.snippet.resourceId.videoId) || {};
               return { ...playObj, statistics };
@@ -44,7 +47,7 @@ const Playlist = ({ playlistId }) => {
   }, [id]);
   return (
     <main className={styles.main}>
-      <section className={styles.section}>
+      <section className={styles.info}>
         {artistInfo
         && (
         <article
@@ -64,8 +67,14 @@ export async function getServerSideProps(context) {
   return {
     props: {
       playlistId: context.query.playlistId || null,
+      ...(await serverSideTranslations(context.locale, ['common'])),
     },
   };
 }
+
+/* export const getStaticProps = async ({ locale }) => ({
+  props: {
+  },
+}); */
 
 export default Playlist;
