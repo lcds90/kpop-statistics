@@ -5,7 +5,6 @@ import axios from 'axios';
 import { fetchMusics } from 'apis/youtube';
 import { fetchInfo } from 'apis/wikipedia';
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styles from './Playlist.module.css';
 import Music from './Music';
 import Statistics from './Statistics';
