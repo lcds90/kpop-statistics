@@ -4,10 +4,8 @@
   min-height: 100vh;
   max-width: 100%;
   display: grid;
-  padding: 0 1.5rem;
   grid: max-content 1fr / 1fr;
-  gap:3rem;
-
+  gap: 6rem;
 }
 
 .artistInfo {
@@ -27,8 +25,20 @@
 
 .info {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  overflow-x:hidden;
+  grid-template-columns: 1fr;
+  overflow-x: hidden;
   place-items: center;
   min-height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    grid: max-content 1fr / 1fr;
+    padding: 0 1.5rem;
+    gap:3rem;
+  }
+
+  .info {
+    grid-template-columns: 1fr 3fr;
+  }
 }

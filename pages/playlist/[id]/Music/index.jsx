@@ -90,15 +90,16 @@ const Music = ({ music: { snippet, statistics = {} } = {} }) => {
           ? renderStatistics()
           : renderNullStatistics()}
       </article>
-      <iframe
-        width="560"
-        height="315"
-        src={`https://www.youtube.com/embed/${videoId}`}
-        frameBorder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        title={title}
-      />
+      <article className={styles.article}>
+        <iframe
+          className={styles.player}
+          src={`https://www.youtube.com/embed/${videoId}`}
+          frameBorder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title={title}
+        />
+      </article>
     </section>
   );
 };

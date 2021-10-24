@@ -5,18 +5,26 @@
   border: 5px double var(--secondary);
   padding: 0.5rem;
   position: relative;
-
-background: linear-gradient(90deg, var(--primary) 55%, var(--background) 60%);
-background-size: cover;
-background-repeat: no-repeat;
-animation-name: MOVE-BG;
-animation-duration: 10s;
-animation-timing-function: linear;
-animation-iteration-count: infinite;
+  background: linear-gradient(180deg, var(--primary) 75%, var(--background) 80%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation-name: MOVE-BG;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  grid: 1fr 0.25fr / 1fr;
 }
 
-.article{
+.article {
   width: 100%;
+  height: 100%;
+  display:grid;
+  place-items:center;
+}
+
+.player {
+  width:30rem;
+  height:30rem;
 }
 
 .title {
@@ -26,17 +34,17 @@ animation-iteration-count: infinite;
   text-align: center;
   font-size: 2rem;
   font-weight: 400;
-  position: absolute;
+  position: relative;
   top: -3rem;
   background: var(--secondary);
   left: -0.5rem;
-  padding:0.15rem;
-  border-radius:1rem 0 1rem 0;
+  padding: 0.15rem;
+  border-radius: 1rem 0 1rem 0;
 }
 
 .statistics {
   display: grid;
-  grid: 1fr / repeat(2, 1fr);
+  grid: 1fr / 1fr;
 }
 
 .statistics h4 {
@@ -48,8 +56,20 @@ animation-iteration-count: infinite;
 
 @media screen and (min-width: 768px) {
   .section {
-    grid-template-columns: 3fr 1fr;
+    grid: 1fr / 1.5fr 1fr;
+    background: linear-gradient(90deg, var(--primary) 55%, var(--background) 60%);
   }
+
+  .statistics {
+  grid: 1fr / repeat(2, 1fr);
+    
+  }
+
+  .player {
+    width:50rem;
+    height:30rem;
+  }
+  
 }
 
 @keyframes MOVE-BG {
