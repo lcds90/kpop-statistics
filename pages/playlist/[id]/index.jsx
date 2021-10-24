@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import axios from 'axios';
 
-import { fetchMusics } from 'apis/youtube';
+import { fetchMusics, fetchPlaylists } from 'apis/youtube';
 import { fetchInfo } from 'apis/wikipedia';
 
 import styles from './Playlist.module.css';
@@ -68,11 +67,23 @@ export async function getServerSideProps(context) {
   return {
     props: {
       playlistId: context.query.playlistId || null,
-      ...(await serverSideTranslations(context.locale, ['common'])),
+      // ...(await serverSideTranslations(context.locale, ['common'])),
     },
   };
 }
 /*
+export const getStaticPaths = async ({ defaultLocale }) => {
+  const playlists = await fetchPlaylists();
+  // Get the paths we want to pre-render based on posts
+  const paths = playlists.map((playlist) => ({
+    params: { id: playlist.snippet.title.toLowerCase().replace(/\s/g, '-'), locale: defaultLocale },
+  }));
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
 export const getStaticProps = async ({ query, locale }) => ({
   props: {
     playlistId: query.playlistId || null,
