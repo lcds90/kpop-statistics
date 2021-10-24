@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
-import { fetchMusics, fetchPlaylists } from 'apis/youtube';
+import { fetchMusics } from 'apis/youtube';
 import { fetchInfo } from 'apis/wikipedia';
 
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styles from './Playlist.module.css';
 import Music from './Music';
 import Statistics from './Statistics';
@@ -64,10 +65,11 @@ const Playlist = ({ playlistId }) => {
 export async function getServerSideProps(context) {
   console.log(context);
   // LINK https://stackoverflow.com/a/67096806
+  const translations = await serverSideTranslations(context.locale, ['common']);
   return {
     props: {
       playlistId: context.query.playlistId || null,
-      // ...(await serverSideTranslations(context.locale, ['common'])),
+      ...translations,
     },
   };
 }
