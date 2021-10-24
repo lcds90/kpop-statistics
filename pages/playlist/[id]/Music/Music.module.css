@@ -5,6 +5,7 @@
   border: 5px double var(--secondary);
   padding: 0.5rem;
   position: relative;
+  background-color: var(--primary);
 }
 
 .article{

@@ -1,5 +1,5 @@
 .main {
-  background-color: var(--primary);
+  background-color: var(--background);
   background-image: url('/images/banner.jpg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -24,6 +24,7 @@
   line-height: 2rem;
   border-radius: 5px;
   border: 5px double var(--secondary);
+  background-color: var(--primary);
 }
 
 .artistInfo ul {

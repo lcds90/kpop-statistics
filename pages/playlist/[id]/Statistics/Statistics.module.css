@@ -1,3 +1,5 @@
 .article {
     width:100%;
+  background-color: var(--primary);
+
 }
