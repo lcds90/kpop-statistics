@@ -22,7 +22,7 @@ const Header = () => {
   };
   return (
     <header className={styles.header}>
-      <Link passHref href="/home" locale="en">
+      <Link passHref href="/" locale="en">
         <button type="button">
           <Image
             alt="Change to English Language"
@@ -33,7 +33,7 @@ const Header = () => {
           />
         </button>
       </Link>
-      <Link passHref href="/home" locale="ko">
+      <Link passHref href="/" locale="ko">
         <button type="button">
           <Image
             alt="Change to Korean Language"
@@ -45,7 +45,7 @@ const Header = () => {
           />
         </button>
       </Link>
-      <Link passHref href="/home" locale="pt">
+      <Link passHref href="/" locale="pt">
         <button type="button">
           <Image
             alt="Change to Portuguese Language"

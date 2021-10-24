@@ -63,6 +63,7 @@ const Playlist = ({ playlistId }) => {
 };
 
 export async function getServerSideProps(context) {
+  console.log(context);
   // LINK https://stackoverflow.com/a/67096806
   return {
     props: {
@@ -71,9 +72,11 @@ export async function getServerSideProps(context) {
     },
   };
 }
-
-/* export const getStaticProps = async ({ locale }) => ({
+/*
+export const getStaticProps = async ({ query, locale }) => ({
   props: {
+    playlistId: query.playlistId || null,
+    ...(await serverSideTranslations(locale, ['common'])),
   },
 }); */
 
