@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&display=swap');
+
 a {
   color: inherit;
   text-decoration: none;
@@ -13,6 +15,7 @@ a {
 /* A cada 1rem será considerada 10px */
 html {
   font-size: 62.5%;
+  font-family: 'Zen Kaku Gothic Antique', sans-serif;
 }
 
 body {

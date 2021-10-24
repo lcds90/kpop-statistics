@@ -5,7 +5,14 @@
   border: 5px double var(--secondary);
   padding: 0.5rem;
   position: relative;
-  background-color: var(--primary);
+
+background: linear-gradient(90deg, var(--primary) 55%, var(--background) 60%);
+background-size: cover;
+background-repeat: no-repeat;
+animation-name: MOVE-BG;
+animation-duration: 10s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
 }
 
 .article{
@@ -20,9 +27,11 @@
   font-size: 2rem;
   font-weight: 400;
   position: absolute;
-  top: -2rem;
+  top: -3rem;
   background: var(--secondary);
   left: -0.5rem;
+  padding:0.15rem;
+  border-radius:1rem 0 1rem 0;
 }
 
 .statistics {
@@ -30,8 +39,27 @@
   grid: 1fr / repeat(2, 1fr);
 }
 
+.statistics h4 {
+  text-align: center;
+  color: var(--background);
+  font-style: italic;
+  font-weight: 300;
+}
+
 @media screen and (min-width: 768px) {
   .section {
     grid-template-columns: 3fr 1fr;
+  }
+}
+
+@keyframes MOVE-BG {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 200%;
+  }
+  100% {
+    background-position: 0% 0%;
   }
 }

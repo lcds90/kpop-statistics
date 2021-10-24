@@ -1,8 +1,5 @@
 .main {
-  background-color: var(--background);
-  background-image: url('/images/banner.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
+  background: linear-gradient(250deg, var(--background), var(--primary));
   width: 100vw;
   min-height: 100vh;
   max-width: 100%;
@@ -10,10 +7,7 @@
   padding: 0 1.5rem;
   grid: max-content 1fr / 1fr;
   gap:3rem;
-  animation-name: MOVE-BG;
-  animation-duration: 100s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+
 }
 
 .artistInfo {
@@ -37,16 +31,4 @@
   overflow-x:hidden;
   place-items: center;
   min-height: 100vh;
-}
-
-@keyframes MOVE-BG {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 0% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
 }

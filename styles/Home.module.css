@@ -1,15 +1,12 @@
 .container {
-  background-color: var(--primary);
-  background-image: url('/images/banner.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
+  background: linear-gradient(0deg, var(--primary) 60%, var(--secondary) 80%);
   width: 100vw;
   min-height: 100vh;
   max-width: 100%;
   display: grid;
   grid: max-content 1fr / 1fr;
   animation-name: MOVE-BG;
-  animation-duration: 10s;
+  animation-duration: 20s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
