@@ -65,11 +65,11 @@ const Playlist = ({ playlistId }) => {
 export async function getServerSideProps(context) {
   console.log(context);
   // LINK https://stackoverflow.com/a/67096806
-  const translations = await serverSideTranslations(context.locale, ['common']);
+  // const translations = await serverSideTranslations(context.locale, ['common']);
   return {
     props: {
       playlistId: context.query.playlistId || null,
-      ...translations,
+      // ...translations,
     },
   };
 }
