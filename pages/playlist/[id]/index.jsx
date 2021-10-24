@@ -64,32 +64,11 @@ const Playlist = ({ playlistId }) => {
 export async function getServerSideProps(context) {
   console.log(context);
   // LINK https://stackoverflow.com/a/67096806
-  // const translations = await serverSideTranslations(context.locale, ['common']);
   return {
     props: {
       playlistId: context.query.playlistId || null,
-      // ...translations,
     },
   };
 }
-/*
-export const getStaticPaths = async ({ defaultLocale }) => {
-  const playlists = await fetchPlaylists();
-  // Get the paths we want to pre-render based on posts
-  const paths = playlists.map((playlist) => ({
-    params: { id: playlist.snippet.title.toLowerCase().replace(/\s/g, '-'), locale: defaultLocale },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps = async ({ query, locale }) => ({
-  props: {
-    playlistId: query.playlistId || null,
-    ...(await serverSideTranslations(locale, ['common'])),
-  },
-}); */
 
 export default Playlist;

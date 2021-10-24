@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   PieChart, Pie, Legend, Tooltip, ResponsiveContainer,
 } from 'recharts';
-import { useTranslation } from 'next-i18next';
+import { i18n } from 'next-i18next';
+
 import {
   labelFormatterTime,
   labelFormatterPercentage,
   percentageStatistics,
   timeStatistics,
 } from 'helpers';
+import { useRouter } from 'next/router';
 import styles from './Music.module.css';
 
 const Music = ({ music: { snippet, statistics = {} } = {} }) => {
-  const { t } = useTranslation('common');
+  const { locale } = useRouter();
+  const [translation, setTranslation] = useState({});
+  useEffect(() => {
+    const bundle = i18n.getResource(locale, 'common');
+    setTranslation(bundle);
+  }, []);
+
   if (!snippet) return <div>Carregando...</div>;
 
   const {
@@ -24,6 +32,11 @@ const Music = ({ music: { snippet, statistics = {} } = {} }) => {
       high: { url: thumbnail },
     },
   } = snippet;
+
+  // LINK https://stackoverflow.com/a/43849204/14263138
+  const t = (word) => word
+    .split('.')
+    .reduce((p, c) => (p && p[c]) || null, translation);
 
   const renderStatistics = () => (
     <section className={styles.statistics}>
