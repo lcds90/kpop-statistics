@@ -2,6 +2,8 @@ export const savage = {
   // 'https://www.youtube.com/watch?v=7ROtgvY_e-A',
   id: '7ROtgvY_e-A',
   ep: 'Savage',
+  whoStarted: 'Winter',
+  whoEnded: 'Ningning',
   giselle: {
     time: 42.97,
     percentage: 19.62,
@@ -28,6 +30,8 @@ export const nextLevel = {
   // id: 'https://www.youtube.com/watch?v=Wi3JuE4m-Lo',
   id: 'Wi3JuE4m-Lo',
   ep: 'Savage',
+  whoStarted: 'Winter',
+  whoEnded: 'Ningning',
   giselle: {
     time: 36.34,
     percentage: 21.77,

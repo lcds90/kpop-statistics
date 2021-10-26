@@ -62,7 +62,6 @@ const Playlist = ({ playlistId }) => {
 };
 
 export async function getServerSideProps(context) {
-  console.log(context);
   // LINK https://stackoverflow.com/a/67096806
   return {
     props: {
