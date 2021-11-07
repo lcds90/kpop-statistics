@@ -49,7 +49,7 @@
   display: grid;
   grid: 1fr / 1fr;
   width: 100%;
-  background: rgba(18, 18, 18, 0.9);
+  background: rgb(16 23 50 / 90%);
   border-radius: 2rem 2rem 0 0;
 }
 

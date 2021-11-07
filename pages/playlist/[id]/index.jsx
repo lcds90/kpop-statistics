@@ -34,8 +34,8 @@ const Playlist = ({ playlistId }) => {
                 .find((music) => music.id === playObj.snippet.resourceId.videoId) || {};
               return { ...playObj, statistics };
             });
-            const wikipediaInfo = await fetchInfo(info.wikiQuery);
-            setArtist(wikipediaInfo.split('<h2><span id="Discography">')[0]);
+            const wikipediaInfo = await fetchInfo(info.wikiQuery, router.locale);
+            setArtist(wikipediaInfo);
             setArtistAverage({ ...info.average });
             return setPlaylistInfo(dataHandling);
           });
