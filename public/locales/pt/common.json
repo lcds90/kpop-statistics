@@ -14,7 +14,10 @@
     "at": "Na data de"
   },
   "music": {
+    "from": "Álbum / EP",
     "percentageStatistics": "Porcentagem de linhas cantadas",
-    "timeStatistics": "Tempo de linhas cantadas"
+    "timeStatistics": "Tempo de linhas cantadas",
+    "whoEnded": "Quem teve a última linha",
+    "whoStarted": "Quem teve a primeira linha"
   }
 }

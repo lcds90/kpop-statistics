@@ -14,7 +14,10 @@
     "at": "날짜에"
   },
   "music": {
+    "from": "앨범 / EP",
     "percentageStatistics": "노래한 대사 비율",
-    "timeStatistics": "성 라인 시간"
+    "timeStatistics": "성 라인 시간",
+    "whoEnded": "누가 마지막 줄을",
+    "whoStarted": "누가 첫 번째 줄을 가졌는지"
   }
 }

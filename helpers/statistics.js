@@ -12,10 +12,10 @@ export const defaultObject = {
 
 export const timeStatistics = (statistics) => Object
   .entries(statistics)
-  .filter((s) => s[0] !== 'id' && s[0] !== 'ep')
+  .filter((s) => !['id', 'ep', 'whoStarted', 'whoEnded'].includes(s[0]))
   .map((s) => ({ name: capitalizeName(s[0]), value: s[1].time, fill: s[1].fill })) || [];
 
 export const percentageStatistics = (statistics) => Object
   .entries(statistics)
-  .filter((s) => s[0] !== 'id' && s[0] !== 'ep')
+  .filter((s) => !['id', 'ep', 'whoStarted', 'whoEnded'].includes(s[0]))
   .map((s) => ({ name: capitalizeName(s[0]), value: s[1].percentage, fill: s[1].fill })) || [];

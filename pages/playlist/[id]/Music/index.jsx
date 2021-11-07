@@ -39,7 +39,22 @@ const Music = ({ music: { snippet, statistics = {} } = {} }) => {
     .reduce((p, c) => (p && p[c]) || null, translation);
 
   const renderStatistics = () => (
-    <section className={styles.statistics}>
+    <div className={styles.statistics}>
+      <article className={styles.infosStatistics}>
+        <h4>Informações</h4>
+        <p>
+          <h5>{t('music.from')}</h5>
+          <span>{statistics.ep}</span>
+        </p>
+        <p>
+          <h5>{t('music.whoStarted')}</h5>
+          <span>{statistics.whoStarted}</span>
+        </p>
+        <p>
+          <h5>{t('music.whoEnded')}</h5>
+          <span>{statistics.whoEnded}</span>
+        </p>
+      </article>
       <article>
         <h4>{t('music.timeStatistics')}</h4>
         <ResponsiveContainer width="99%" height={300}>
@@ -77,20 +92,20 @@ const Music = ({ music: { snippet, statistics = {} } = {} }) => {
           </PieChart>
         </ResponsiveContainer>
       </article>
-    </section>
+    </div>
   );
 
   const renderNullStatistics = () => <div>No statistics</div>;
 
   return (
-    <section className={styles.section}>
+    <div className={styles.section}>
       <article className={styles.article}>
         <h3 className={styles.title}>{title}</h3>
         {Object.keys(statistics).length > 1
           ? renderStatistics()
           : renderNullStatistics()}
       </article>
-      <article className={styles.article}>
+      <div className={styles.article}>
         <iframe
           className={styles.player}
           src={`https://www.youtube.com/embed/${videoId}`}
@@ -99,8 +114,8 @@ const Music = ({ music: { snippet, statistics = {} } = {} }) => {
           allowFullScreen
           title={title}
         />
-      </article>
-    </section>
+      </div>
+    </div>
   );
 };
 

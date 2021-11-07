@@ -31,6 +31,11 @@
   min-height: 100vh;
 }
 
+.info > h1 {
+  color:white;
+  font-style:italic;
+}
+
 @media screen and (min-width: 768px) {
   .main {
     grid: max-content 1fr / 1fr;
@@ -40,5 +45,9 @@
 
   .info {
     grid-template-columns: 1fr 3fr;
+  }
+
+  .info > h1 {
+    grid-column: span 2;
   }
 }

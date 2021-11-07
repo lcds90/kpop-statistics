@@ -47,6 +47,7 @@ const Playlist = ({ playlistId }) => {
   return (
     <main className={styles.main}>
       <section className={styles.info}>
+        <h1>{id}</h1>
         {artistInfo
         && (
         <article
