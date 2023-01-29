@@ -9,7 +9,7 @@ import styles from './Playlist.module.css';
 import Music from './Music';
 import Statistics from './Statistics';
 
-const Playlist = ({ playlistId }) => {
+function Playlist({ playlistId }) {
   const router = useRouter();
   const [playlistInfo, setPlaylistInfo] = useState([]);
   const [artistInfo, setArtist] = useState(null);
@@ -60,7 +60,7 @@ const Playlist = ({ playlistId }) => {
       {playlistInfo.map((playlist) => <Music key={playlist.id} music={playlist} />)}
     </main>
   );
-};
+}
 
 export async function getServerSideProps(context) {
   // LINK https://stackoverflow.com/a/67096806
