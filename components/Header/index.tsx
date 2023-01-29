@@ -28,8 +28,9 @@ const Header = () => {
             alt="Change to English Language"
             title="Change to English Language"
             src={iconUSA}
-            layout="fill"
             quality={100}
+            width={30}
+            height={30}
           />
         </button>
       </Link>
@@ -39,9 +40,9 @@ const Header = () => {
             alt="Change to Korean Language"
             title="Change to Korean Language"
             src={iconSouthKorea}
-            layout="fill"
             quality={100}
-
+            width={30}
+            height={30}
           />
         </button>
       </Link>
@@ -51,8 +52,9 @@ const Header = () => {
             alt="Change to Portuguese Language"
             title="Change to Portuguese Language"
             src={iconBrazil}
-            layout="fill"
             quality={100}
+            width={30}
+            height={30}
           />
         </button>
       </Link>

@@ -2,16 +2,20 @@ import '../styles/globals.css';
 import { appWithTranslation } from 'next-i18next';
 import Head from 'next/head';
 
-function MyApp({ Component, pageProps }) {
-  return (
+interface IAppProps {
+  Component: React.FC;
+  pageProps: any;
+}
+
+const App = ({ Component, pageProps }: IAppProps) =>  (
     <>
       <Component {...pageProps} />
       <Head>
-        <title>Kpop Statistics</title>
+        <title>KPOP Statistics</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
     </>
-  );
-}
+);
 
-export default appWithTranslation(MyApp);
+
+export default appWithTranslation(App as any);

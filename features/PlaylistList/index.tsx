@@ -10,7 +10,7 @@ import styles from './PlaylistList.module.css';
 const PlaylistList = ({ list }) => {
   const [order, setOrder] = useState('ascDate');
   const [items, setItems] = useState([]);
-  const cardsRef = useRef(0);
+  const cardsRef = useRef<any>();
   const timeline = useMemo(() => gsap.timeline({ paused: true }), []);
   useEffect(() => {
     setItems(list);
