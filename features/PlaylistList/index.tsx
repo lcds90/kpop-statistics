@@ -10,7 +10,7 @@ import styles from './PlaylistList.module.css';
 const PlaylistList = ({ list }) => {
   const [order, setOrder] = useState('ascDate');
   const [items, setItems] = useState([]);
-  const cardsRef = useRef(0);
+  const cardsRef = useRef<any>();
   const timeline = useMemo(() => gsap.timeline({ paused: true }), []);
   useEffect(() => {
     setItems(list);
@@ -26,9 +26,9 @@ const PlaylistList = ({ list }) => {
   const handleOrder = ({ target: { value } }) => {
     const verifyOrder = {
       ascDate: () => list
-        .sort((a, b) => new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt)),
+        .sort((a, b) => new Date(b.snippet.publishedAt).valueOf() - new Date(a.snippet.publishedAt).valueOf()),
       descDate: () => list
-        .sort((a, b) => new Date(a.snippet.publishedAt) - new Date(b.snippet.publishedAt)),
+        .sort((a, b) => new Date(a.snippet.publishedAt).valueOf() - new Date(b.snippet.publishedAt).valueOf()),
       asc: () => list
         .sort((a, b) => a.snippet.title.localeCompare(b.snippet.title)),
       desc: () => list
@@ -51,8 +51,8 @@ const PlaylistList = ({ list }) => {
       <article className={styles.section} ref={cardsRef}>
         {
       order === 'original'
-        ? list.map((playlist) => <Card playlist={playlist} key={playlist.id} />)
-        : items.map((playlist) => <Card playlist={playlist} key={playlist.id} />)
+        ? list.map((playlist: any) => <Card playlist={playlist} key={playlist.id} />)
+        : items.map((playlist: any) => <Card playlist={playlist} key={playlist.id} />)
 }
       </article>
     </>

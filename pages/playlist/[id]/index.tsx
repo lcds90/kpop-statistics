@@ -9,7 +9,7 @@ import styles from './Playlist.module.css';
 import Music from './Music';
 import Statistics from './Statistics';
 
-const Playlist = ({ playlistId }) => {
+function Playlist({ playlistId }) {
   const router = useRouter();
   const [playlistInfo, setPlaylistInfo] = useState([]);
   const [artistInfo, setArtist] = useState(null);
@@ -26,7 +26,7 @@ const Playlist = ({ playlistId }) => {
         axios
           .get('/api/playlist', { params: { id } })
           .then(async ({ data: { informations } }) => {
-            if (!informations) return setPlaylistInfo(data);
+            if (!informations) return setPlaylistInfo(data as any);
             const { musics, info } = informations;
             // NOTE expect to match from api to retrieve statistcs or return empty object
             const dataHandling = data.map((playObj) => {
@@ -37,7 +37,7 @@ const Playlist = ({ playlistId }) => {
             const wikipediaInfo = await fetchInfo(info.wikiQuery, router.locale);
             setArtist(wikipediaInfo);
             setArtistAverage({ ...info.average });
-            return setPlaylistInfo(dataHandling);
+            return setPlaylistInfo(dataHandling as any);
           });
       });
     };
@@ -57,10 +57,10 @@ const Playlist = ({ playlistId }) => {
         )}
         {artistAverage && <Statistics average={artistAverage} />}
       </section>
-      {playlistInfo.map((playlist) => <Music key={playlist.id} music={playlist} />)}
+      {playlistInfo.map((playlist: any) => <Music key={playlist.id} music={playlist} />)}
     </main>
   );
-};
+}
 
 export async function getServerSideProps(context) {
   // LINK https://stackoverflow.com/a/67096806
