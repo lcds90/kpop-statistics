@@ -26,7 +26,7 @@ function Playlist({ playlistId }) {
         axios
           .get('/api/playlist', { params: { id } })
           .then(async ({ data: { informations } }) => {
-            if (!informations) return setPlaylistInfo(data);
+            if (!informations) return setPlaylistInfo(data as any);
             const { musics, info } = informations;
             // NOTE expect to match from api to retrieve statistcs or return empty object
             const dataHandling = data.map((playObj) => {
@@ -37,7 +37,7 @@ function Playlist({ playlistId }) {
             const wikipediaInfo = await fetchInfo(info.wikiQuery, router.locale);
             setArtist(wikipediaInfo);
             setArtistAverage({ ...info.average });
-            return setPlaylistInfo(dataHandling);
+            return setPlaylistInfo(dataHandling as any);
           });
       });
     };
@@ -57,7 +57,7 @@ function Playlist({ playlistId }) {
         )}
         {artistAverage && <Statistics average={artistAverage} />}
       </section>
-      {playlistInfo.map((playlist) => <Music key={playlist.id} music={playlist} />)}
+      {playlistInfo.map((playlist: any) => <Music key={playlist.id} music={playlist} />)}
     </main>
   );
 }

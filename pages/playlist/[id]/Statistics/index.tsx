@@ -12,7 +12,7 @@ import styles from './Statistics.module.css';
 const Statistics = ({ average }) => {
   if (!average) return <div>Carregando...</div>;
   const data = Object.entries(average)
-    .map((av) => ({ name: av[0], Time: av[1].time, Percentage: av[1].percentage }));
+    .map((av: any) => ({ name: av[0], Time: av[1].time, Percentage: av[1].percentage }));
   return (
     <article className={styles.article}>
       <ResponsiveContainer width="99%" height={300}>

@@ -13,11 +13,66 @@ import {
 import { useRouter } from 'next/router';
 import styles from './Music.module.css';
 
-const Music = ({ music: { snippet, statistics = {} } = {} }) => {
+const defaultMusic = {
+  snippet: {
+    channelTitle: '',
+    description: '',
+    resourceId: {
+      videoId: '',
+    },
+    title: '',
+    thumbnails: {
+      high: {
+        url: '',
+      },
+    },
+  },
+  statistics: {
+    ep: '',
+    whoStarted: '',
+    whoEnded: '',
+    time: {
+      '0': 0,
+    },
+    percentage: {
+      '0': 0,
+    },
+  },
+};
+
+
+const Music = ({ music: { snippet, statistics } = defaultMusic }: {
+  music: {
+    snippet: {
+      channelTitle: string;
+      description: string;
+      resourceId: {
+        videoId: string;
+      };
+      title: string;
+      thumbnails: {
+        high: {
+          url: string;
+        };
+      };
+    };
+    statistics: {
+      ep: string;
+      whoStarted: string;
+      whoEnded: string;
+      time: {
+        [key: string]: number;
+      };
+      percentage: {
+        [key: string]: number;
+      };
+    };
+  };
+}) => {
   const { locale } = useRouter();
   const [translation, setTranslation] = useState({});
   useEffect(() => {
-    const bundle = i18n.getResource(locale, 'common');
+    const bundle = i18n?.getResource(locale as string, 'common', 'common');
     setTranslation(bundle);
   }, []);
 
@@ -109,7 +164,6 @@ const Music = ({ music: { snippet, statistics = {} } = {} }) => {
         <iframe
           className={styles.player}
           src={`https://www.youtube.com/embed/${videoId}`}
-          frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           title={title}
