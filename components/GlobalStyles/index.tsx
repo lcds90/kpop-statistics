@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&display=swap');
+import { createGlobalStyle } from 'styled-components'
+const GlobalStyle = createGlobalStyle`
 
 a {
   color: inherit;
@@ -23,11 +24,14 @@ body {
 }
 
 :root {
-/*   --background: #130007;
-  --primary: #fbd3ba;
-  --secondary: #f88594; */
-  --background: #274472;
-  --primary: #C3E0E5;
-  --secondary: #5885AF;
+  ${({ theme: { colors } }) => `
+    --background: ${colors.background};
+    --primary: ${colors.primary};
+    --secondary: ${colors.secondary};
+  `}
 
 }
+
+`
+
+export default GlobalStyle

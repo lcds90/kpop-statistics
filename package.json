@@ -15,11 +15,13 @@
     "next-i18next": "8.9.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "recharts": "2.1.5"
+    "recharts": "2.1.5",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
+    "@types/styled-components": "^5.1.26",
     "eslint": "8.33.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-next": "13.1.6",
