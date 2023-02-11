@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@constants": ["./constants/index.ts"],
+    },
     "lib": [
       "dom",
       "dom.iterable",

@@ -5,7 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { fetchPlaylists } from 'apis/youtube';
 import { Header } from 'components';
 import { PlaylistList } from 'features';
-import styles from 'styles/Home.module.css';
+import { Aside, Layout, Main } from 'components';
 
 const Home = () => {
   const [playlist, setPlaylist] = useState([]);
@@ -18,16 +18,16 @@ const Home = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <aside className={styles.aside}>
+    <Layout>
+      <Aside>
         <Header />
         <h2>{t('welcome.title')}</h2>
         <p>{t('welcome.disclaimer')}</p>
-      </aside>
-      <main className={styles.main}>
+      </Aside>
+      <Main>
         <PlaylistList list={playlist} />
-      </main>
-    </div>
+      </Main>
+    </Layout>
   );
 };
 
