@@ -1,23 +1,40 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { Header } from 'components';
+import { Aside, Header, Layout, LayoutMain } from 'components';
 import { PlaylistList } from 'features';
-import { Aside, Layout, Main } from 'components';
+import { gridGenerator } from 'helpers';
+
+const layoutProps: LayoutProps = {
+  isMaxHeight: true,
+  hasBackground: true,
+  grid: {
+    mobile: gridGenerator(["max-content", "1fr"], 1),
+    tablet: gridGenerator(1, ["1fr", "3fr"]),
+  },
+};
+
+const mainProps: LayoutProps = {
+  isMaxHeight: true,
+  grid: {
+    mobile: gridGenerator(1, ["0.1fr", "1fr"]),
+    tablet: gridGenerator(1, ["1fr", "3fr"]),
+  }
+}
 
 const Home = () => {
   const { t } = useTranslation('common');
- 
+  
   return (
-    <Layout>
+    <Layout {...layoutProps}>
       <Aside>
         <Header />
         <h2>{t('welcome.title')}</h2>
         <p>{t('welcome.disclaimer')}</p>
       </Aside>
-      <Main>
+      <LayoutMain {...mainProps}>
         <PlaylistList />
-      </Main>
+      </LayoutMain>
     </Layout>
   );
 };

@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@constants": ["./constants/index.ts"],
+      "@constants": ["tokens/index.ts"],
     },
     "lib": [
       "dom",
@@ -25,7 +25,9 @@
     "jsx": "preserve"
   },
   "include": [
-    "next-env.d.ts",
+    "types/next-env.d.ts",
+    "types/styled.d.ts",
+    "types/grid.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],
