@@ -7,7 +7,10 @@ interface GridProperties {
     columns: GridTypes[];
 }
 
+type As = "div" | "main" | "section" | "header" | "footer" | "aside" | "article" | "nav";
+
 interface LayoutProps {
+    as?: As;
     isMaxHeight?: boolean;
     isMaxWidth?: boolean;
     hasBackground?: boolean;

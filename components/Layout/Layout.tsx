@@ -12,8 +12,8 @@ export const Layout = styled.div.attrs((props: LayoutProps) => ({
     hasBackground &&
     `background: linear-gradient(0deg, ${colors.primary} 60%, ${colors.secondary} 80%);`}
 
-  width: ${({ isMaxWidth }) => (isMaxWidth ? "100vw" : "auto")};
-  max-height: ${({ isMaxHeight }) => (isMaxHeight ? "100vh" : "auto")};
+  width: ${({ isMaxWidth }) => (isMaxWidth ? "100vw" : "100%")};
+  max-height: ${({ isMaxHeight }) => (isMaxHeight ? "100vh" : "100%")};
   grid: ${({ grid: { mobile: grid } }) =>
     `${grid.rows.join(" ")} / ${grid.columns.join(" ")}`};
 
@@ -22,5 +22,6 @@ export const Layout = styled.div.attrs((props: LayoutProps) => ({
     grid: ${({ grid: { tablet: grid } }) =>
       `${grid.rows.join(" ")} / ${grid.columns.join(" ")}`};
     overflow: hidden;
-  }`; 
+  }
+  `; 
 

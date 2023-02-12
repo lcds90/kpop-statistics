@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
-import { fetchMusics } from 'apis/youtube';
-import { fetchInfo } from 'apis/wikipedia';
+import { fetchMusics } from "apis/youtube";
+import { fetchInfo } from "apis/wikipedia";
 
-import styles from './Playlist.module.css';
-import Music from './Music';
-import Statistics from './Statistics';
+import styles from "./Playlist.module.css";
+import Music from "./Music";
+import Statistics from "./Statistics";
 
 function Playlist({ playlistId }) {
   const router = useRouter();
@@ -18,28 +18,30 @@ function Playlist({ playlistId }) {
   const { id } = router.query;
 
   useEffect(() => {
-    if (!playlistId) router.push('/');
+    if (!playlistId) router.push("/");
 
-    const fetch = () => {
-      fetchMusics(playlistId).then((data) => {
-        if (!Array.isArray(data)) return;
-        axios
-          .get('/api/playlist', { params: { id } })
-          .then(async ({ data: { informations } }) => {
-            if (!informations) return setPlaylistInfo(data as any);
-            const { musics, info } = informations;
-            // NOTE expect to match from api to retrieve statistcs or return empty object
-            const dataHandling = data.map((playObj) => {
-              const statistics = musics
-                .find((music) => music.id === playObj.snippet.resourceId.videoId) || {};
-              return { ...playObj, statistics };
-            });
-            const wikipediaInfo = await fetchInfo(info.wikiQuery, router.locale);
-            setArtist(wikipediaInfo);
-            setArtistAverage({ ...info.average });
-            return setPlaylistInfo(dataHandling as any);
-          });
+    const fetch = async () => {
+      const data = await fetchMusics(playlistId);
+      if (!Array.isArray(data)) return;
+
+      const {
+        data: { informations },
+      } = await axios.get("/api/playlist", { params: { id } });
+      if (!informations) return setPlaylistInfo(data as any);
+
+      const { musics, info } = informations;
+      const dataHandling = data.map((playObj) => {
+        const statistics =
+          musics.find(
+            (music) => music.id === playObj.snippet.resourceId.videoId
+          ) || {};
+        return { ...playObj, statistics };
       });
+
+      const wikipediaInfo = await fetchInfo(info.wikiQuery, router.locale);
+      setArtist(wikipediaInfo);
+      setArtistAverage({ ...info.average });
+      setPlaylistInfo(dataHandling as any);
     };
 
     fetch();
@@ -48,16 +50,17 @@ function Playlist({ playlistId }) {
     <main className={styles.main}>
       <section className={styles.info}>
         <h1>{id}</h1>
-        {artistInfo
-        && (
-        <article
-          className={styles.artistInfo}
-          dangerouslySetInnerHTML={{ __html: artistInfo }}
-        />
+        {artistInfo && (
+          <article
+            className={styles.artistInfo}
+            dangerouslySetInnerHTML={{ __html: artistInfo }}
+          />
         )}
         {artistAverage && <Statistics average={artistAverage} />}
       </section>
-      {playlistInfo.map((playlist: any) => <Music key={playlist.id} music={playlist} />)}
+      {playlistInfo.map((playlist: any) => (
+        <Music key={playlist.id} music={playlist} />
+      ))}
     </main>
   );
 }

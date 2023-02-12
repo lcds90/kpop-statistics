@@ -7,6 +7,7 @@ import { gridGenerator } from 'helpers';
 
 const layoutProps: LayoutProps = {
   isMaxHeight: true,
+  isMaxWidth: true,
   hasBackground: true,
   grid: {
     mobile: gridGenerator(["max-content", "1fr"], 1),
@@ -15,11 +16,12 @@ const layoutProps: LayoutProps = {
 };
 
 const mainProps: LayoutProps = {
+  as: "main",
   isMaxHeight: true,
   grid: {
-    mobile: gridGenerator(1, ["0.1fr", "1fr"]),
-    tablet: gridGenerator(1, ["1fr", "3fr"]),
-  }
+    mobile: gridGenerator( ["0.1fr", "1fr"], 1),
+    tablet: gridGenerator(["0.1fr", "1fr"], 1),
+  },
 }
 
 const Home = () => {
@@ -32,9 +34,9 @@ const Home = () => {
         <h2>{t('welcome.title')}</h2>
         <p>{t('welcome.disclaimer')}</p>
       </Aside>
-      <LayoutMain {...mainProps}>
+      <Layout {...mainProps}>
         <PlaylistList />
-      </LayoutMain>
+      </Layout>
     </Layout>
   );
 };
