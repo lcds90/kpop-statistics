@@ -35,4 +35,8 @@ interface LayoutProps {
         mobile: "small" | "medium" | "large";
         tablet: "small" | "medium" | "large";
     };
+    overflow?: {
+        y?: boolean;
+        x?: boolean;
+    }
 }

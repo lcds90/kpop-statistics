@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from './Card.module.css';
 import { useTranslation } from 'react-i18next';
 
-const PlaylistCard = ({ playlist }) => {
+const PlaylistCard = ({ playlist, ...props }) => {
   const { t } = useTranslation('common');
   const {
     id,
@@ -23,6 +23,7 @@ const PlaylistCard = ({ playlist }) => {
   };
   return (
     <Link
+    {...props}
     href={{
       pathname: 'playlist/[id]',
       query: { playlistId: id }

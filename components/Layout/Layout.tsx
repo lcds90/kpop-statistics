@@ -64,10 +64,22 @@ export const Layout = styled.div.attrs((props: LayoutProps) => ({
     grid && grid.mobile &&
     `grid: ${grid.mobile.rows.join(" ")} / ${grid.mobile.columns.join(" ")};`}
 
+  ${({ overflow }) => {
+    let result = "overflow: revert; "
+    if (!overflow) return result;
+    if (overflow.x) {
+      result += "overflow-x: auto; ";
+    }
+    if (overflow.y) {
+      result += "overflow-y: auto; ";
+    }
+    return result
+  }
+  }
+
   @media (min-width: ${Breakpoints.TABLET}) {
     ${({ grid }) =>
       grid && grid.tablet &&
-      `grid: ${grid.tablet.rows.join(" ")} / ${grid.tablet.columns.join(" ")};`}
-    overflow: hidden;
+    `grid: ${grid.tablet.rows.join(" ")} / ${grid.tablet.columns.join(" ")};`}
   }
 `;
