@@ -6,7 +6,7 @@ import {
 	ThemeProvider,
 } from 'styled-components';
 import GlobalStyle from '../components/GlobalStyles';
-import 'styles/fonts.css'
+import 'fonts/fonts.css'
 
 interface IAppProps {
 	Component: React.FC;

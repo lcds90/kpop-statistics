@@ -1,47 +1,58 @@
-import {
-  useEffect, useMemo, useRef, useState,
-} from 'react';
-import { gsap } from 'gsap';
-import { Card } from 'components';
-import styles from './PlaylistList.module.css';
+import { useEffect, useMemo, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { Card } from "components";
+import styles from "./PlaylistList.module.css";
+import { fetchPlaylists } from "apis/youtube";
+import { orderPlaylistBy } from "./utils";
 
-// LINK https://javascript.plainenglish.io/react-functions-gsap-timelines-and-hooks-oh-my-ec7620b6bdc6
-
-const PlaylistList = ({ list }) => {
-  const [order, setOrder] = useState('ascDate');
-  const [items, setItems] = useState([]);
+const PlaylistList = () => {
+  const [order, setOrder] = useState("ascDate");
+  const [playlists, setPlaylists] = useState<any[]>([]);
   const cardsRef = useRef<any>();
-  const timeline = useMemo(() => gsap.timeline({ paused: true }), []);
-  useEffect(() => {
-    setItems(list);
+  const timeline = useMemo(
+    () =>
+      gsap.timeline({
+        paused: true,
+        repeat: 0,
+      }),
+    []
+  );
+
+  const animate = () => {
     timeline.from(cardsRef.current.childNodes, {
-      x: -50,
       opacity: 0,
-      duration: 0.7,
-      stagger: 0.25,
+      duration: 0.5,
+      stagger: 0.1,
     });
+    timeline.set(cardsRef.current.childNodes, {
+      clearProps: "all",
+    }); 
     timeline.play();
-  }, [list, items, timeline]);
+  }
+
+  useEffect(() => {
+    const fetch = async () => {
+      const data = await fetchPlaylists();
+      setPlaylists(data);
+      animate();
+    };
+
+    fetch();
+  }, []);
 
   const handleOrder = ({ target: { value } }) => {
-    const verifyOrder = {
-      ascDate: () => list
-        .sort((a, b) => new Date(b.snippet.publishedAt).valueOf() - new Date(a.snippet.publishedAt).valueOf()),
-      descDate: () => list
-        .sort((a, b) => new Date(a.snippet.publishedAt).valueOf() - new Date(b.snippet.publishedAt).valueOf()),
-      asc: () => list
-        .sort((a, b) => a.snippet.title.localeCompare(b.snippet.title)),
-      desc: () => list
-        .sort((a, b) => b.snippet.title.localeCompare(a.snippet.title)),
-    };
     setOrder(value);
-    setItems(verifyOrder[value]());
+    setPlaylists(orderPlaylistBy[value](playlists));
   };
 
   return (
     <>
       <article className={styles.div}>
-        <select onChange={handleOrder} value={order}>
+        <select
+          disabled={!playlists.length}
+          onChange={handleOrder}
+          value={order}
+        >
           <option value="ascDate">Por mais novo</option>
           <option value="descDate">Por mais antigo</option>
           <option value="asc">A - Z</option>
@@ -49,11 +60,13 @@ const PlaylistList = ({ list }) => {
         </select>
       </article>
       <article className={styles.section} ref={cardsRef}>
-        {
-      order === 'original'
-        ? list.map((playlist: any) => <Card playlist={playlist} key={playlist.id} />)
-        : items.map((playlist: any) => <Card playlist={playlist} key={playlist.id} />)
-}
+        {!playlists.length ? (
+          <div>Carregando...</div>
+        ) : (
+          playlists.map((playlist: any) => (
+            <Card playlist={playlist} key={playlist.id} />
+          ))
+        )}
       </article>
     </>
   );

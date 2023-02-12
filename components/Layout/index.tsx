@@ -19,11 +19,5 @@ export const Layout = styled.div`
 
 export const Main = styled.main`
   display: grid;
-  grid: 1fr / 1fr;
-  overflow: hidden;
-  @media (min-width: ${Breakpoints.TABLET}) {
-    grid: 0.25fr 1fr / 1fr;
-    overflow: hidden;
-  }
+  grid: 0.1fr 1fr / 1fr;
 `;
-
