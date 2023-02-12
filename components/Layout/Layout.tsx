@@ -17,7 +17,7 @@ export const Layout = styled.div.attrs((props: LayoutProps) => ({
 
   width: ${({ isMaxWidth }) => (isMaxWidth ? "100vw" : "100%")};
   max-height: ${({ isMaxHeight }) => (isMaxHeight ? "100vh" : "100%")};
-  min-height: ${({ isMaxHeight }) => (isMaxHeight ? "100vh" : "100%")};
+  min-height: ${({ isMaxHeight }) => (isMaxHeight ? "100%" : "revert")};
 
   ${({ padding }) => {
     if (padding) {
