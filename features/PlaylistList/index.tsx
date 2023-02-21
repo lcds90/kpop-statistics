@@ -92,7 +92,6 @@ const PlaylistList = () => {
     setPlaylists(orderPlaylistBy[value](playlists));
   };
 
-  // use effect to handle order of playlists
   useEffect(() => {
     if (order === "ascDate") {
       setPlaylists(orderPlaylistBy.ascDate(playlists));

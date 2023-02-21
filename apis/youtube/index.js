@@ -34,6 +34,7 @@ export const fetchPlaylists = async () => {
 
 export const fetchMusics = async (playlistId) => {
   try {
+    console.log(playlistId);
     const params = {
       playlistId,
       maxResults: 50,

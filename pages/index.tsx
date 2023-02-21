@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { Aside, Header, Layout, LayoutMain } from 'components';
+import { Aside, Header, Layout } from 'components';
 import { PlaylistList } from 'features';
 import { gridGenerator } from 'helpers';
 

@@ -4,30 +4,69 @@ import axios from "axios";
 
 import { fetchMusics } from "apis/youtube";
 import { fetchInfo } from "apis/wikipedia";
+import { gridGenerator, storage } from "helpers";
 
 import styles from "./Playlist.module.css";
 import Music from "./Music";
 import Statistics from "./Statistics";
+import { Layout } from "@/components";
+import { Info } from "./styleds";
+
+const mainProps: LayoutProps = {
+  as: "main",
+  hasBackground: true,
+  isMaxHeight: true,
+  grid: {
+    mobile: gridGenerator(1, 1),
+    tablet: gridGenerator(1, 1),
+  },
+};
+
+const infoProps: LayoutProps = {
+  as: "section",
+  isMaxHeight: true,
+  padding: {
+    mobile: "small",
+    tablet: "medium",
+  },
+  grid: {
+    mobile: gridGenerator(1, 1),
+    tablet: gridGenerator(1, 1),
+  },
+  overflow: {
+    y: true,
+    x: true,
+  },
+};
 
 function Playlist({ playlistId }) {
   const router = useRouter();
-  const [playlistInfo, setPlaylistInfo] = useState([]);
-  const [artistInfo, setArtist] = useState(null);
-  const [artistAverage, setArtistAverage] = useState({});
+  const [playlistInfo, setPlaylistInfo] = useState({
+    data: [] as any[],
+    loading: true,
+  });
+  const [artistInfo, setArtist] = useState({
+    data: "",
+    loading: true,
+  });
+  const [artistAverage, setArtistAverage] = useState({
+    data: {} as any,
+    loading: true,
+  });
 
-  const { id } = router.query;
+  const { id: artist } = router.query;
 
   useEffect(() => {
-    if (!playlistId) router.push("/");
-
+    const id = playlistId || storage.get("playlistId");
+    if (!id) router.push("/");
     const fetch = async () => {
-      const data = await fetchMusics(playlistId);
+      const data = await fetchMusics(id);
       if (!Array.isArray(data)) return;
 
       const {
         data: { informations },
-      } = await axios.get("/api/playlist", { params: { id } });
-      if (!informations) return setPlaylistInfo(data as any);
+      } = await axios.get("/api/playlist", { params: { id: artist } });
+      if (!informations) return setPlaylistInfo({ data, loading: false });
 
       const { musics, info } = informations;
       const dataHandling = data.map((playObj) => {
@@ -39,34 +78,31 @@ function Playlist({ playlistId }) {
       });
 
       const wikipediaInfo = await fetchInfo(info.wikiQuery, router.locale);
-      setArtist(wikipediaInfo);
-      setArtistAverage({ ...info.average });
-      setPlaylistInfo(dataHandling as any);
+      setArtist({ data: wikipediaInfo, loading: false });
+      setArtistAverage({ data: info.average, loading: false });
+      setPlaylistInfo({ data: dataHandling, loading: false });
     };
 
     fetch();
-  }, [id]);
+  }, []);
+
   return (
-    <main className={styles.main}>
-      <section className={styles.info}>
-        <h1>{id}</h1>
-        {artistInfo && (
-          <article
-            className={styles.artistInfo}
-            dangerouslySetInnerHTML={{ __html: artistInfo }}
-          />
+    <Layout {...mainProps}>
+      <Layout {...infoProps}>
+        <h1>{artist}</h1>
+        {!artistInfo.loading && (
+          <Info dangerouslySetInnerHTML={{ __html: artistInfo.data }} />
         )}
-        {artistAverage && <Statistics average={artistAverage} />}
-      </section>
-      {playlistInfo.map((playlist: any) => (
+        {!artistAverage.loading && <Statistics average={artistAverage.data} />}
+      </Layout>
+      {/* {playlistInfo.data.map((playlist: any) => (
         <Music key={playlist.id} music={playlist} />
-      ))}
-    </main>
+      ))} */}
+    </Layout>
   );
 }
 
 export async function getServerSideProps(context) {
-  // LINK https://stackoverflow.com/a/67096806
   return {
     props: {
       playlistId: context.query.playlistId || null,

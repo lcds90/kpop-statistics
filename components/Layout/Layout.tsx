@@ -3,7 +3,6 @@ import { Breakpoints, MOVE_BG } from "tokens";
 
 export const Layout = styled.div.attrs((props: LayoutProps) => ({
   ...props,
-  hasBackground: props.hasBackground || false,
 }))`
   max-width: 100%;
 
